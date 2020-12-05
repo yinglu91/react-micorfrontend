@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mfe-marketing-srv
+  namespace: dev-01
+  labels:
+    name: mfe-marketing
+spec:
+  type: NodePort
+  ports:
+    - name: mfe-marketing
+      protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30091
+  selector:
+    app: mfe-marketing
+# kubectl get ns
+# kubectl create namespace dev-01
+# kubectl apply -f kube-deployment.yaml
+# kubectl apply -f kube-service.yaml
+# website:  http://localhost:30091/remoteEntry.js
+
+# clean up: kubectl delete namespace dev-01

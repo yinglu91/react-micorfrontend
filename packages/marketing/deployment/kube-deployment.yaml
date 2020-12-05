@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mfe-marketing-deployment
+  namespace: dev-01
+spec:
+  selector:
+    matchLabels:
+      app: mfe-marketing
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mfe-marketing
+    spec:
+      containers:
+        - name: mfe-marketing
+          image: yinglu91/mfe-marketing:1.0
+          ports:
+            - containerPort: 80

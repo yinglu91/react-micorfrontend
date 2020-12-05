@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mfe-container-deployment
+  namespace: dev-01
+spec:
+  selector:
+    matchLabels:
+      app: mfe-container
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mfe-container
+    spec:
+      containers:
+        - name: mfe-container
+          image: yinglu91/mfe-container:1.0
+          ports:
+            - containerPort: 80
+
+          env:
+            - name: MARKETING_BASE_URL
+              value: http://localhost:30091
